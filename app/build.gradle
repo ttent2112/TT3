@@ -1,0 +1,51 @@
+/*
+ *  Copyright (C) Philadelphia Science, Inc - All Rights Reserved
+ *  * Unauthorized copying of this file, via any medium is strictly prohibited
+ *  * Proprietary and confidential
+ *  * Written by Timothy Tentinger <tim.tentinger@fynydd.com>, 4/2/17 9:18 PM
+ *
+ */
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.phlsci.tt2"
+        minSdkVersion 22
+        targetSdkVersion 25
+        versionCode 1
+        versionName "Alpha 0.01"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        buildTypes {
+            alpha {
+                applicationIdSuffix ".alpha"
+                versionNameSuffix "-alpha" + "-build" + getDate()
+                signingConfig signingConfigs.debug
+            }
+        }
+    }
+
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+        compile 'com.android.support:appcompat-v7:25.3.0'
+        compile 'com.android.support:support-v4:25.3.0'
+        testCompile 'junit:junit:4.12'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+static def getDate() {
+    String formattedDate = new Date().format('yyyyMMddHHmmss')
+    return formattedDate
+}
+
+dependencies {
+}
