@@ -32,6 +32,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;
     private String LOG_TAG = "AppCompatPreferActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(LOG_TAG, "Here I am!");
@@ -50,7 +51,6 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         mIntentFilter.addAction(mBroadcastArrayListAction);
 
         */
-
 
 
         Intent serviceIntent = new Intent(this, InstrumentService.class);
@@ -136,4 +136,10 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         }
         return mDelegate;
     }
+
+    public void setActivityBackgroundColor(int color) {
+        View view = this.getWindow().getDecorView();
+        view.setBackgroundColor(color);
+    }
+
 }

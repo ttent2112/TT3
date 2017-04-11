@@ -21,8 +21,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class InstrumentService extends Service {
-    public int counter=0;
+    public int counter = 0;
     private String LOG_TAG = "InstrumentService";
+
     public InstrumentService(Context applicationContext) {
         super();
         Log.i(LOG_TAG, "Here I am!");
@@ -58,40 +59,42 @@ public class InstrumentService extends Service {
                 if (!mRunning) {   // make sure not running already
                     mRunning = true;
 
-                    Log.i(LOG_TAG, "Body of onStartCommand");
+                    Log.i(LOG_TAG, "TTT Body of onStartCommand");
 
                     // need to check if below is correct place
                     startTimer();
+                    Log.i(LOG_TAG, "TTT starttimer");
 
 
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Intent broadcastIntent = new Intent();
-         //           broadcastIntent.setAction(MainActivity.mBroadcastStringAction);
-                    broadcastIntent.putExtra("Data", "Broadcast Data");
-                    sendBroadcast(broadcastIntent);
+                                        /*
+                                        try {
+                                            Thread.sleep(5000);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        Intent broadcastIntent = new Intent();
+                                        //           broadcastIntent.setAction(MainActivity.mBroadcastStringAction);
+                                        broadcastIntent.putExtra("Data", "Broadcast Data");
+                                        sendBroadcast(broadcastIntent);
+                                        try {
+                                            Thread.sleep(5000);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        //           broadcastIntent.setAction(MainActivity.mBroadcastIntegerAction);
+                                        broadcastIntent.putExtra("Data", 10);
+                                        sendBroadcast(broadcastIntent);
 
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-         //           broadcastIntent.setAction(MainActivity.mBroadcastIntegerAction);
-                    broadcastIntent.putExtra("Data", 10);
-                    sendBroadcast(broadcastIntent);
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-         //           broadcastIntent
-         //                   .setAction(MainActivity.mBroadcastArrayListAction);
-                    broadcastIntent.putExtra("Data", mList);
-                    sendBroadcast(broadcastIntent);
+                                        try {
+                                            Thread.sleep(5000);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        //           broadcastIntent
+                                        //                   .setAction(MainActivity.mBroadcastArrayListAction);
+                                        broadcastIntent.putExtra("Data", mList);
+                                        sendBroadcast(broadcastIntent);
+                                        */
                 } else  // Just leave, service is already running.
                 {
                     Log.i(LOG_TAG, "Service already running.");
@@ -133,7 +136,8 @@ public class InstrumentService extends Service {
 
     private Timer timer;
     private TimerTask timerTask;
-    long oldTime=0;
+    long oldTime = 0;
+
     public void startTimer() {
         //set a new Timer
         timer = new Timer();
@@ -151,7 +155,7 @@ public class InstrumentService extends Service {
     public void initializeTimerTask() {
         timerTask = new TimerTask() {
             public void run() {
-                Log.i("in timer", "in timer ++++  "+ (counter++));
+                Log.i("in timer", "in timer ++++  " + (counter++));
             }
         };
     }
@@ -166,7 +170,6 @@ public class InstrumentService extends Service {
             timer = null;
         }
     }
-
 
 
 }

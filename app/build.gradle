@@ -10,7 +10,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.phlsci.tt2"
+        applicationId "com.phlsci.tt3"
         minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
@@ -42,10 +42,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
+
 static def getDate() {
     String formattedDate = new Date().format('yyyyMMddHHmmss')
     return formattedDate
 }
 
 dependencies {
+    compile 'com.android.support:design:25.3.1'
 }
